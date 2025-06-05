@@ -24,6 +24,11 @@ jobs:
 
     - name: Build
       run: go build -v -o CloudflareSpeedTest
+    - name: Upload Linux/macOS artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CloudflareSpeedTest-linux-macos
+        path: CloudflareSpeedTest
 
   build-windows:
     runs-on: windows-latest
@@ -41,3 +46,8 @@ jobs:
       env:
         GOOS: windows
         GOARCH: amd64
+    - name: Upload Windows artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CloudflareSpeedTest-windows
+        path: CloudflareSpeedTest.exe
